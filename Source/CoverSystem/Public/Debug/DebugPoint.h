@@ -17,14 +17,15 @@ public:
 	UPROPERTY()
 	FColor Color;
 
+	// if false, this DebugPoint is for Units and not generic.
 	UPROPERTY()
-	bool bGenericOrUnitDebugData;
+	bool bGenericDebugData;
 
 	FDebugPoint()
-		: Location(), Color(), bGenericOrUnitDebugData()
+		: Location(), Color(), bGenericDebugData()
 	{}
 
 	FDebugPoint(FVector _Location, FColor _Color, bool _bGenericOrUnitDebugData)
-		: Location(_Location), Color(_Color), bGenericOrUnitDebugData(_bGenericOrUnitDebugData)
+		: Location(_Location), Color(_Color), bGenericDebugData(_bGenericOrUnitDebugData)
 	{}
 };

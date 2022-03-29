@@ -18,3 +18,6 @@ void FCoverSystemModule::ShutdownModule()
 #undef LOCTEXT_NAMESPACE
 	
 IMPLEMENT_MODULE(FCoverSystemModule, CoverSystem)
+
+DEFINE_LOG_CATEGORY(LogCoverSystem);
+DEFINE_LOG_CATEGORY(VLogLogCoverSystem);

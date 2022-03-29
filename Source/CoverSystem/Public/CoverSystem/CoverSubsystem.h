@@ -138,4 +138,6 @@ public:
 	bool ReleaseCover(FVector ElementLocation);
 	
 	virtual void OnWorldBeginPlay(UWorld& InWorld) override;
+
+	float GetCoverPointGroundOffset();
 };

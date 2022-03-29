@@ -67,9 +67,6 @@ void UCoverSubsystem::OnNavMeshTilesUpdated(const TSet<uint32>& UpdatedTiles)
 	TArray<const AActor*> dirtyCoverActors;
 	for (uint32 tileIdx : UpdatedTiles)
 	{
-		// get the bounding box of the updated tile
-		FBox tileBounds = Navmesh->GetNavMeshTileBounds(tileIdx);
-
 #if DEBUG_RENDERING
 		// DrawDebugXXX calls may crash UE4 when not called from the main thread, so start synchronous tasks in case we're planning on drawing debug shapes
 		if (bDebugDraw)
@@ -235,15 +232,15 @@ void UCoverSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 {
 	Super::OnWorldBeginPlay(InWorld);
 
-	UNavigationSystemV1* navsys = UNavigationSystemV1::GetCurrent(GetWorld());
-	if (!IsValid(navsys))
+	UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
+	if (!IsValid(NavSys))
 		return;
-
+	
 	// subscribe to tile update events on the navmesh
-	const ANavigationData* mainNavData = navsys->MainNavData;
-	if (mainNavData && mainNavData->IsA(AChangeNotifyingRecastNavMesh::StaticClass()))
+	const ANavigationData* MainNavData = NavSys->MainNavData;
+	if (MainNavData && MainNavData->IsA(AChangeNotifyingRecastNavMesh::StaticClass()))
 	{
-		Navmesh = const_cast<AChangeNotifyingRecastNavMesh*>(Cast<AChangeNotifyingRecastNavMesh>(mainNavData));
+		Navmesh = const_cast<AChangeNotifyingRecastNavMesh*>(Cast<AChangeNotifyingRecastNavMesh>(MainNavData));
 		Navmesh->NavmeshTilesUpdatedBufferedDelegate.AddDynamic(this, &UCoverSubsystem::OnNavMeshTilesUpdated);
 		
 		bool bFoundCoverSystemBoundsActor;
@@ -268,4 +265,9 @@ void UCoverSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 		
 		Navmesh->RebuildAll();
 	}
+}
+
+float UCoverSubsystem::GetCoverPointGroundOffset()
+{
+	return CoverPointGroundOffset;
 }
