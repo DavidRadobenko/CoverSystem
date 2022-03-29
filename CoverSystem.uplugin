@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "CoverSystem",
+	"Description": "The real Author is David Nadaski. I took his cover system and just put it inside a Plugin.",
+	"Category": "Other",
+	"CreatedBy": "David Radobenko",
+	"CreatedByURL": "https://github.com/GlassBeaver/CoverSystem",
+	"DocsURL": "https://horugame.com/real-time-dynamic-cover-system-for-unreal-engine-4/",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CoverSystem",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
