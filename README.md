@@ -1,3 +1,8 @@
+# Changes from this fork
+I turned his Project into a plugin. C++ only without content.
+GlassBeaver did a Singleton for the System, but I changed that and used a WorldSubsystem instead.
+Besides that, there are minor changes. Should be working like in his project.
+
 # CoverSystem
 Real-Time Dynamic Cover System for Unreal Engine 4
 
